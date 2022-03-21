@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import java.util.logging.Logger;
 
-public class MainActivity extends AppCompatActivity {
+public class App extends AppCompatActivity {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     @Override
     protected void onCreate(Bundle savedInstanceState) {

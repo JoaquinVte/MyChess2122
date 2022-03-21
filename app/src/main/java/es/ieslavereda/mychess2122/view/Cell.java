@@ -63,7 +63,6 @@ public class Cell extends androidx.appcompat.widget.AppCompatImageView {
         setBackgroundColor(getResources().getColor(color.getAttribute(),getContext().getTheme()));
     }
 
-
     public Board getBoard() {
         return board;
     }
