@@ -50,13 +50,13 @@ public class Cell extends androidx.appcompat.widget.AppCompatImageView {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int padding = (int) (displayMetrics.density * 16);
+        //int padding = (int) (displayMetrics.density * 16);
+        int padding = (int)(getResources().getDimension(R.dimen.board_padding) * 2);
         int width = displayMetrics.widthPixels - padding;
+        getResources().getDimension(R.dimen.board_padding);
 
         int size = (width) / 10;
 
-        setMaxWidth(size);
-        setMaxHeight(size);
         setMinimumWidth(size);
         setMinimumHeight(size);
 

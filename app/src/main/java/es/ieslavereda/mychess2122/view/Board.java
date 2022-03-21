@@ -89,7 +89,8 @@ public class Board extends TableLayout {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int padding = (int) (displayMetrics.density * 16);
+        //int padding = (int) (displayMetrics.density * 16);
+        int padding = (int)(getResources().getDimension(R.dimen.board_padding) * 2);
         int width = displayMetrics.widthPixels - padding;
 
         TextView textView = new TextView(getContext());
@@ -145,7 +146,11 @@ public class Board extends TableLayout {
         Board copyBoard = new Board(getContext());
 
         // Get a copy of all pieces and place on the new board
-        List<Piece> allPieces = cells.values().stream().filter(Cell::containsPiece).map(Cell::getPiece).map(p -> p.copy(copyBoard)).collect(Collectors.toList());
+        List<Piece> allPieces = cells.values().stream()
+                .filter(Cell::containsPiece)
+                .map(Cell::getPiece)
+                .map(p -> p.copy(copyBoard))
+                .collect(Collectors.toList());
 
         return copyBoard;
     }
@@ -164,15 +169,15 @@ public class Board extends TableLayout {
 
     public int count(ChessType chessType) {
         return (int) cells.values().stream()
-                .filter(cell -> cell.containsPiece())
-                .map(cell -> cell.getPiece())
+                .filter(Cell::containsPiece)
+                .map(Cell::getPiece)
                 .filter(piece -> piece.getChessType() == chessType).count();
     }
 
     public List<Piece> getWhitePieces() {
         return cells.values().stream()
-                .filter(cell -> cell.containsPiece())
-                .map(cell -> cell.getPiece())
+                .filter(Cell::containsPiece)
+                .map(Cell::getPiece)
                 .filter(piece -> piece.getPieceColor().equals(WHITE))
                 .collect(Collectors.toCollection(ArrayList::new));
     }
