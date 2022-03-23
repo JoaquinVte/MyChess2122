@@ -12,6 +12,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import es.ieslavereda.mychess2122.R;
 import es.ieslavereda.mychess2122.model.ChessType;
 import es.ieslavereda.mychess2122.model.Coordinate;
 import es.ieslavereda.mychess2122.model.IDeletedPieceManager;
+import es.ieslavereda.mychess2122.model.MyDeletedPieceManager;
 import es.ieslavereda.mychess2122.model.Pieces.BlackBishop;
 import es.ieslavereda.mychess2122.model.Pieces.BlackKing;
 import es.ieslavereda.mychess2122.model.Pieces.BlackKnight;
@@ -34,7 +36,6 @@ import es.ieslavereda.mychess2122.model.Pieces.WhiteKnight;
 import es.ieslavereda.mychess2122.model.Pieces.WhitePawn;
 import es.ieslavereda.mychess2122.model.Pieces.WhiteQueen;
 import es.ieslavereda.mychess2122.model.Pieces.WhiteRook;
-import es.ieslavereda.mychess2122.model.StorageRemovedPieces;
 
 public class Board extends TableLayout {
 
@@ -47,7 +48,9 @@ public class Board extends TableLayout {
     public Board(Context context, AttributeSet attrs) {
         super(context, attrs);
         cells = new HashMap<>();
-        deletedPieceManager = new StorageRemovedPieces();
+        DeletedPanel whitePanel = findViewById(R.id.whitePanel);
+        DeletedPanel blackPanel = findViewById(R.id.blackPanel);
+        deletedPieceManager = new MyDeletedPieceManager(whitePanel,blackPanel);
 
         initializeCells();
         LOGGER.finest("Board created.");
@@ -57,7 +60,10 @@ public class Board extends TableLayout {
         super(context);
 
         cells = new HashMap<>();
-        deletedPieceManager = new StorageRemovedPieces();
+
+        DeletedPanel whitePanel = findViewById(R.id.whitePanel);
+        DeletedPanel blackPanel = findViewById(R.id.blackPanel);
+        deletedPieceManager = new MyDeletedPieceManager(whitePanel,blackPanel);
 
         initializeCells();
         LOGGER.finest("Board created.");
@@ -299,5 +305,9 @@ public class Board extends TableLayout {
         }
 
         return checkmate;
+    }
+    public void setOnclickListener(View.OnClickListener listener){
+        for(Cell cell : cells.values())
+            cell.setOnClickListener(listener);
     }
 }
