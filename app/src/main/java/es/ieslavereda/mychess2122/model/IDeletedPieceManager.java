@@ -1,7 +1,6 @@
 package es.ieslavereda.mychess2122.model;
 
-import es.ieslavereda.mychess2122.model.ChessType;
-import es.ieslavereda.mychess2122.model.Piece;
+import es.ieslavereda.mychess2122.model.Pieces.Piece;
 
 public interface IDeletedPieceManager {
     void add(Piece piece);

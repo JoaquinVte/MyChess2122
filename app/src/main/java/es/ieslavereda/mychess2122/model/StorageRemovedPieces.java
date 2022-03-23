@@ -3,6 +3,8 @@ package es.ieslavereda.mychess2122.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.ieslavereda.mychess2122.model.Pieces.Piece;
+
 public class StorageRemovedPieces implements IDeletedPieceManager {
 
     private final List<Piece> pieces;

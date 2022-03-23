@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 
 import es.ieslavereda.mychess2122.R;
 import es.ieslavereda.mychess2122.model.Coordinate;
-import es.ieslavereda.mychess2122.model.Piece;
+import es.ieslavereda.mychess2122.model.Pieces.Piece;
 
 public class Cell extends androidx.appcompat.widget.AppCompatImageView {
 
@@ -53,12 +53,13 @@ public class Cell extends androidx.appcompat.widget.AppCompatImageView {
         //int padding = (int) (displayMetrics.density * 16);
         int padding = (int)(getResources().getDimension(R.dimen.board_padding) * 2);
         int width = displayMetrics.widthPixels - padding;
-        getResources().getDimension(R.dimen.board_padding);
 
         int size = (width) / 10;
 
         setMinimumWidth(size);
         setMinimumHeight(size);
+        setMaxWidth(size);
+        setMaxHeight(size);
 
         setBackgroundColor(getResources().getColor(color.getAttribute(),getContext().getTheme()));
     }
@@ -77,6 +78,17 @@ public class Cell extends androidx.appcompat.widget.AppCompatImageView {
 
     public void setPiece(Piece piece) {
         this.piece = piece;
+        // Establecer la imagen en la celda (ImageButton)
+        if(piece!=null){
+            setImageResource(piece.getChessType().getShape());
+            int padding = (int)getResources().getDimension(R.dimen.pieces_padding);
+            setPadding(padding,padding,padding,padding);
+            setScaleType(ScaleType.FIT_CENTER);
+            setAdjustViewBounds(true);
+        }else {
+            setImageResource(0);
+        }
+
     }
 
     public boolean containsPiece() {

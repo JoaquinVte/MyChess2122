@@ -4,8 +4,8 @@ import java.util.*;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import static es.ieslavereda.mychess2122.model.PieceColor.BLACK;
-import static es.ieslavereda.mychess2122.model.PieceColor.WHITE;
+import static es.ieslavereda.mychess2122.model.Pieces.PieceColor.BLACK;
+import static es.ieslavereda.mychess2122.model.Pieces.PieceColor.WHITE;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,8 +20,20 @@ import es.ieslavereda.mychess2122.R;
 import es.ieslavereda.mychess2122.model.ChessType;
 import es.ieslavereda.mychess2122.model.Coordinate;
 import es.ieslavereda.mychess2122.model.IDeletedPieceManager;
-import es.ieslavereda.mychess2122.model.Piece;
-import es.ieslavereda.mychess2122.model.PieceColor;
+import es.ieslavereda.mychess2122.model.Pieces.BlackBishop;
+import es.ieslavereda.mychess2122.model.Pieces.BlackKing;
+import es.ieslavereda.mychess2122.model.Pieces.BlackKnight;
+import es.ieslavereda.mychess2122.model.Pieces.BlackPawn;
+import es.ieslavereda.mychess2122.model.Pieces.BlackQueen;
+import es.ieslavereda.mychess2122.model.Pieces.BlackRook;
+import es.ieslavereda.mychess2122.model.Pieces.Piece;
+import es.ieslavereda.mychess2122.model.Pieces.PieceColor;
+import es.ieslavereda.mychess2122.model.Pieces.WhiteBishop;
+import es.ieslavereda.mychess2122.model.Pieces.WhiteKing;
+import es.ieslavereda.mychess2122.model.Pieces.WhiteKnight;
+import es.ieslavereda.mychess2122.model.Pieces.WhitePawn;
+import es.ieslavereda.mychess2122.model.Pieces.WhiteQueen;
+import es.ieslavereda.mychess2122.model.Pieces.WhiteRook;
 import es.ieslavereda.mychess2122.model.StorageRemovedPieces;
 
 public class Board extends TableLayout {
@@ -39,6 +51,7 @@ public class Board extends TableLayout {
 
         initializeCells();
         LOGGER.finest("Board created.");
+        placePieces();
     }
     public Board(Context context) {
         super(context);
@@ -48,6 +61,7 @@ public class Board extends TableLayout {
 
         initializeCells();
         LOGGER.finest("Board created.");
+        placePieces();
     }
 
     private void initializeCells() {
@@ -106,38 +120,38 @@ public class Board extends TableLayout {
     public void placePieces() {
 
         // Place Kings
-//        blackKing = new BlackKing(getCell( new Coordinate('E', 1)));
-//
-//        whiteKing = new WhiteKing(getCell( new Coordinate('E', 8)));
-//
-//
-//        // Place Queens
-//        new BlackQueen(getCell( new Coordinate('D', 1)));
-//        new WhiteQueen(getCell( new Coordinate('D', 8)));
-//
-//        // Place Bishops
-//        new BlackBishop(getCell( new Coordinate('C', 1)));
-//        new BlackBishop(getCell( new Coordinate('F', 1)));
-//        new WhiteBishop(getCell( new Coordinate('C', 8)));
-//        new WhiteBishop(getCell( new Coordinate('F', 8)));
-//
-//        // Place Knights
-//        new BlackKnight(getCell( new Coordinate('B', 1)));
-//        new BlackKnight(getCell( new Coordinate('G', 1)));
-//        new WhiteKnight(getCell( new Coordinate('B', 8)));
-//        new WhiteKnight(getCell( new Coordinate('G', 8)));
-//
-//        // Place Rooks
-//        new BlackRook(getCell( new Coordinate('A', 1)));
-//        new BlackRook(getCell( new Coordinate('H', 1)));
-//        new WhiteRook(getCell( new Coordinate('A', 8)));
-//        new WhiteRook(getCell( new Coordinate('H', 8)));
-//
-//        // Place Pawns
-//        for (int col = 0; col < 8; col++) {
-//            new BlackPawn(getCell( new Coordinate((char) ('A' + col), 2)));
-//            new WhitePawn(getCell( new Coordinate((char) ('A' + col), 7)));
-//        }
+        blackKing = new BlackKing(getCell( new Coordinate('E', 1)));
+
+        whiteKing = new WhiteKing(getCell( new Coordinate('E', 8)));
+
+
+        // Place Queens
+        new BlackQueen(getCell( new Coordinate('D', 1)));
+        new WhiteQueen(getCell( new Coordinate('D', 8)));
+
+        // Place Bishops
+        new BlackBishop(getCell( new Coordinate('C', 1)));
+        new BlackBishop(getCell( new Coordinate('F', 1)));
+        new WhiteBishop(getCell( new Coordinate('C', 8)));
+        new WhiteBishop(getCell( new Coordinate('F', 8)));
+
+        // Place Knights
+        new BlackKnight(getCell( new Coordinate('B', 1)));
+        new BlackKnight(getCell( new Coordinate('G', 1)));
+        new WhiteKnight(getCell( new Coordinate('B', 8)));
+        new WhiteKnight(getCell( new Coordinate('G', 8)));
+
+        // Place Rooks
+        new BlackRook(getCell( new Coordinate('A', 1)));
+        new BlackRook(getCell( new Coordinate('H', 1)));
+        new WhiteRook(getCell( new Coordinate('A', 8)));
+        new WhiteRook(getCell( new Coordinate('H', 8)));
+
+        // Place Pawns
+        for (int col = 0; col < 8; col++) {
+            new BlackPawn(getCell( new Coordinate((char) ('A' + col), 2)));
+            new WhitePawn(getCell( new Coordinate((char) ('A' + col), 7)));
+        }
         LOGGER.finest("Placed pieces.");
     }
 

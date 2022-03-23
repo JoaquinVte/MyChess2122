@@ -1,6 +1,7 @@
 package es.ieslavereda.mychess2122.model;
 
 import es.ieslavereda.mychess2122.R;
+import es.ieslavereda.mychess2122.model.Pieces.PieceColor;
 
 public enum ChessType {
 

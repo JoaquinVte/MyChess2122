@@ -1,4 +1,4 @@
-package es.ieslavereda.mychess2122.model;
+package es.ieslavereda.mychess2122.model.Pieces;
 
 public enum PieceColor {
     WHITE,

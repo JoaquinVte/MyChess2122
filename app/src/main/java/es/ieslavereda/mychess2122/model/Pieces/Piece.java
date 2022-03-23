@@ -1,8 +1,10 @@
-package es.ieslavereda.mychess2122.model;
+package es.ieslavereda.mychess2122.model.Pieces;
 
 import java.io.Serializable;
 import java.util.Set;
 
+import es.ieslavereda.mychess2122.model.ChessType;
+import es.ieslavereda.mychess2122.model.Coordinate;
 import es.ieslavereda.mychess2122.view.Board;
 import es.ieslavereda.mychess2122.view.Cell;
 
